@@ -1,0 +1,31 @@
+.my-modal-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(177, 175, 175, 0.8);
+  /* opacity: 0.9; */
+  color: white;
+  z-index: 1;
+  display: flex;
+  /* justify-items: center; */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-header {
+}
+
+.modal-title {
+}
+
+.image-upload {
+}
+
+.modal-buttons {
+}
+
+.embed-submit {
+  background-color: #0a7227;
+}
