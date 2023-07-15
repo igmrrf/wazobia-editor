@@ -26,7 +26,11 @@ const Element = (props) => {
     case 'headingThree':
       return <h3 {...attributes}>{children}</h3>;
     case 'blockquote':
+      if (element.code) {
+        return <div dangerouslySetInnerHTML={{ __html: element.code }} />;
+      }
       return <blockquote {...attributes}>{children}</blockquote>;
+
     case 'alignLeft':
       return (
         <div
@@ -178,7 +182,6 @@ const WazobiaEditor = () => {
     }
 
     const point = at && Point.isPoint(at) ? at : Editor.end(editor, []);
-    console.log({ point });
 
     if (point) {
       Transforms.select(editor, point);
@@ -222,10 +225,7 @@ const WazobiaEditor = () => {
               }}
               className='m-4 flex justify-center items-center'
             >
-              <BiPlus
-                onClick={() => setShowEmbed(!showEmbed)}
-                size={25}
-              />
+              <BiPlus onClick={() => setShowEmbed(!showEmbed)} size={25} />
             </div>
             <EmbedInput
               editor={editor}

@@ -10,11 +10,12 @@ const SocialModal = ({ handleAddToNode, setShowModal }) => {
     event.preventDefault();
 
     handleAddToNode({
-      type: 'social',
+      type: 'blockquote',
       code,
       url,
       children: [{ text: '' }],
     });
+    setShowModal(false);
   };
   return (
     <div className='px-10 py-10 border rounded bg-white text-black'>

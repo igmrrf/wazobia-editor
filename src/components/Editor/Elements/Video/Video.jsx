@@ -1,18 +1,28 @@
-import React from "react";
-
-import "./Video.css";
+import './Video.css';
 
 const Image = ({ attributes, element, children }) => {
-  const { url, width, height } = element;
+  const { url, width = '100%', height = '400' } = element;
+
+  const handleYoutube = (url) => {
+    if (url.includes('youtube')) {
+      return url.replace('watch?v=', 'embed/');
+    } else {
+      return url;
+    }
+  };
+
   return (
-    <div
-      {...attributes}
-      className="element-video"
-      style={{ display: "flex", justifyContent: "center" }}
-    >
-      <div contentEditable={false} style={{ width: width, height: height }}>
-        <div className="video-wrapper">
-          <iframe src={url} frameBorder="0" title={url} />
+    <div {...attributes} className='element-video'>
+      <div contentEditable={false} style={{ height: height, width: width }}>
+        <div className='video-wrapper'>
+          <iframe
+            src={handleYoutube(url)}
+            title={url}
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+            allowfullscreen
+            width={width}
+            height={height}
+          />
         </div>
       </div>
       {children}

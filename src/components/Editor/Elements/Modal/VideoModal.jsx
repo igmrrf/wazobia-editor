@@ -13,12 +13,17 @@ const VideoModal = ({ setShowModal, handleAddToNode }) => {
       url,
       children: [{ text: '' }],
     });
+    setShowModal(false);
   };
   return (
     <div className='px-10 py-10 border rounded bg-white text-black'>
       <div className='flex justify-between items-center'>
         <p>Embed</p>
-        <MdClose size={20} className='cursor-pointer' onClick={() => setShowModal(false)} />
+        <MdClose
+          size={20}
+          className='cursor-pointer'
+          onClick={() => setShowModal(false)}
+        />
       </div>
 
       <div className='w-[40vw] h-min-[20vh]'>

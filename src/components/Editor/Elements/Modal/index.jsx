@@ -4,7 +4,6 @@ import VideoModal from './VideoModal';
 import './styles.css';
 
 const Modal = ({ setShowModal, handleAddToNode, modalValues }) => {
-  console.log({ modalValues });
   const { title } = modalValues;
   return (
     <div className='my-modal-wrapper'>
