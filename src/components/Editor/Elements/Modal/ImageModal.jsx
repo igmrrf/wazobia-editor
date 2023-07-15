@@ -30,7 +30,11 @@ const ImageModal = ({ handleAddToNode, setShowModal }) => {
     <div className='px-10 py-10 border rounded bg-white text-black'>
       <div className='flex justify-between items-center'>
         <p>Embed</p>
-        <MdClose size={20} onClick={() => setShowModal(false)} />
+        <MdClose
+          size={20}
+          onClick={() => setShowModal(false)}
+          className='cursor-pointer'
+        />
       </div>
       <h1 className='text-md py-4'>Upload Image</h1>
       <div>
@@ -55,7 +59,7 @@ const ImageModal = ({ handleAddToNode, setShowModal }) => {
         </div>
       </div>
       <div>
-        <button className='mr-8 mb-4 border-green-500 bg-green-500 border-spacing-4 px-5 py-2 text-white'>
+        <button className='mr-8 mb-4 rounded-md border-spacing-4 px-5 py-2 text-white opacity-100 bg-[#0A7227]'>
           Embed
         </button>
         <button

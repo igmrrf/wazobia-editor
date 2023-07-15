@@ -140,6 +140,11 @@ const WazobiaEditor = () => {
   const [showEmbed, setShowEmbed] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalValues, setModalValues] = useState(null);
+  const [textLength, setTextLength] = useState(0);
+
+  const handleTextLength = ({ value }) => {
+    console.log({ value });
+  };
 
   const [value, setValue] = useState(initialValue);
 
@@ -156,7 +161,7 @@ const WazobiaEditor = () => {
       type: 'paragraph',
       children: [
         {
-          text: 'You can delete images with the cross in the top left. Try deleting this sheep:',
+          text: '',
         },
       ],
     };
@@ -186,31 +191,42 @@ const WazobiaEditor = () => {
 
   return (
     <div>
-      <input placeholder='Add title' type='text' className='title-input text-2xl' width={'40vw'}  />
+      <input
+        placeholder='Add title'
+        type='text'
+        className='title-input text-2xl'
+        width={'40vw'}
+      />
       <Slate
         editor={editor}
         initialValue={value}
         onChange={(newValue) => setValue(newValue)}
       >
         <Toolbar />
-        <div className='editor-wrapper'>
+        <div className='editor-wrapper relative'>
           <Editable
             placeholder='Write something'
             renderElement={renderElement}
             renderLeaf={renderLeaf}
+            onChange={handleTextLength}
             className='p-4 '
             style={{ outline: 'none' }}
           />
           <div className='popup-wrapper '>
-            <BiPlus
-              color='black'
-              onClick={() => setShowEmbed(!showEmbed)}
-              size={30}
-              className='m-3 inline-block text-gray-600 rounded-xl border border-[#CEE3D4]-500 bg-[#CEE3D4]-500 text-sm'
+            <div
               style={{
                 backgroundColor: '#CEE3D4',
+                borderRadius: '50%',
+                width: '40px',
+                height: '40px',
               }}
-            />
+              className='m-4 flex justify-center items-center'
+            >
+              <BiPlus
+                onClick={() => setShowEmbed(!showEmbed)}
+                size={25}
+              />
+            </div>
             <EmbedInput
               editor={editor}
               show={showEmbed}
@@ -218,6 +234,9 @@ const WazobiaEditor = () => {
               setShowModal={setShowModal}
               setModalValues={setModalValues}
             />
+          </div>
+          <div className='absolute bottom-0 right-0 shadow-green-300 shadow-inner w-[100%] text-right px-2'>
+            0/1000
           </div>
         </div>
       </Slate>

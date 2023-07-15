@@ -20,7 +20,11 @@ const SocialModal = ({ handleAddToNode, setShowModal }) => {
     <div className='px-10 py-10 border rounded bg-white text-black'>
       <div className='flex justify-between items-center'>
         <p>Embed</p>
-        <MdClose className='hover:text-green-800 cursor-pointer' size={20} onClick={() => setShowModal(false)} />
+        <MdClose
+          className='hover:text-green-800 cursor-pointer'
+          size={20}
+          onClick={() => setShowModal(false)}
+        />
       </div>
 
       <div className='w-[50vw] h-min-[25vh]'>
@@ -35,7 +39,7 @@ const SocialModal = ({ handleAddToNode, setShowModal }) => {
             id='social-media-platform'
             name='social-media-platform'
             value={social}
-            className='block bg-gray-100 outline-none w-[100%] my-2 p-3'
+            className='bg-gray-100 outline-none w-[100%] my-2 p-3 h-auto'
             onChange={(event) => setSocial(event.target.value)}
           >
             <option value='facebook'>Facebook</option>
@@ -74,7 +78,7 @@ const SocialModal = ({ handleAddToNode, setShowModal }) => {
             name='social-media-code'
             type='text'
             placeholder='Enter Embed Code'
-            className='block bg-gray-100 outline-none w-[100%] my-2 p3'
+            className='bg-gray-100 outline-none w-[100%] my-2 p-3'
             onChange={(event) => setCode(event.target.value)}
           />
         </div>
@@ -82,7 +86,7 @@ const SocialModal = ({ handleAddToNode, setShowModal }) => {
       <div>
         <button
           onClick={handleEmbed}
-          className='mr-8 mb-4 border-green-500 bg-green-500 border-spacing-4 px-5 py-2 text-white'
+          className='mr-8 mb-4 opacity-100 bg-[#0A7227] border-spacing-4 px-5 py-2 text-white'
         >
           Embed
         </button>

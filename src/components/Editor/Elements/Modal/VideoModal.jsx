@@ -18,7 +18,7 @@ const VideoModal = ({ setShowModal, handleAddToNode }) => {
     <div className='px-10 py-10 border rounded bg-white text-black'>
       <div className='flex justify-between items-center'>
         <p>Embed</p>
-        <MdClose size={20} onClick={() => setShowModal(false)} />
+        <MdClose size={20} className='cursor-pointer' onClick={() => setShowModal(false)} />
       </div>
 
       <div className='w-[40vw] h-min-[20vh]'>
@@ -34,7 +34,7 @@ const VideoModal = ({ setShowModal, handleAddToNode }) => {
             name='video-media-platform'
             value={platform}
             onChange={(event) => setPlatform(event.target.value)}
-            className='block bg-gray-100 outline-none w-[100%] my-2 px-3'
+            className='block bg-gray-100 outline-none w-[100%] my-2 p-3 h-auto'
           >
             <option value='facebook'>Youtube</option>
             <option value='twitter'>Vimeo</option>
@@ -54,7 +54,7 @@ const VideoModal = ({ setShowModal, handleAddToNode }) => {
             name='video-media-url'
             type='text'
             placeholder='Enter Video URL'
-            className='block bg-gray-100 outline-none w-[100%] my-2 px-3'
+            className='block bg-gray-100 outline-none w-[100%] my-2 p-3'
             onChange={(event) => setUrl(event.target.value)}
           />
         </div>
@@ -62,7 +62,7 @@ const VideoModal = ({ setShowModal, handleAddToNode }) => {
       <div>
         <button
           onClick={handleEmbed}
-          className='mr-8 mb-4 border-green-500 bg-green-500 border-spacing-4 px-5 py-2 text-white'
+          className='mr-8 mb-4 opacity-100 bg-[#0A7227] border-spacing-4 px-5 py-2 text-white'
         >
           Embed
         </button>
