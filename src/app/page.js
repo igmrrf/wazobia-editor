@@ -1,12 +1,10 @@
 'use client';
-import SlateEditor from '@/components/SlateEditor/Editor';
-import { useState } from 'react';
+import WazobiaEditor from '@/components/Editor';
 
 export default function Home() {
-  const [text, setText] = useState('');
   return (
     <main className='flex min-h-screen flex-col items-center justify-center p-24'>
-      <SlateEditor />
+      <WazobiaEditor />
     </main>
   );
 }

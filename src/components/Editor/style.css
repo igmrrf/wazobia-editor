@@ -29,7 +29,8 @@ button {
   box-shadow: -8px 8px 13px #ededed, 8px -8px 13px #ffffff;
   min-height: 400px;
   height: fit-content;
-  max-width: 60vw;
+  width: 40vw;
+  max-width: 40vw;
 }
 table {
   width: 100%;
@@ -47,9 +48,10 @@ td {
   left: 0;
   background-color: white;
   padding: 6px 10px;
-  border: 1px solid lightgray;
+  margin-left: 20px;
   height: fit-content;
   z-index: 1;
+  box-shadow: -8px 8px 13px #ededed, 8px -8px 13px #ffffff;
 }
 button {
   cursor: pointer;

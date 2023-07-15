@@ -14,7 +14,7 @@ const options = [
   },
   {
     title: 'Social',
-    formats: 'Instagram, Twitter, TikTok, Snapchat png',
+    formats: 'Instagram, Twitter, TikTok, Snapchat',
     Icon: <MdBubbleChart size={30} />,
   },
 ];
@@ -24,6 +24,7 @@ const EmbedInput = ({
   setShowModal,
   showModal,
   setShowEmbed,
+  setModalValues,
 }) => {
   const [formData, setFormData] = useState({
     url: '',
@@ -31,15 +32,15 @@ const EmbedInput = ({
     height: '',
   });
   const handleUpload = (item) => {
-    console.log({ item });
-    setShowModal(true);
+    setModalValues(item)
     setTimeout(() => {
+      setShowModal(true);
       setShowEmbed(false);
     }, 100);
   };
 
   return (
-    <div>
+    <div className='pl-4'>
       {show && (
         <div className='popup'>
           {options.length &&

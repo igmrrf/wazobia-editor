@@ -3,7 +3,6 @@ import { BiPlus } from 'react-icons/bi';
 import { Editor, Point, Transforms, createEditor } from 'slate';
 import { withHistory } from 'slate-history';
 import { Editable, Slate, withReact } from 'slate-react';
-import './Editor.css';
 import EmbedInput from './Elements/Embed/EmbedInput';
 import Image from './Elements/Image/Image';
 import Link from './Elements/Link/Link';
@@ -13,6 +12,7 @@ import Toolbar from './Toolbar/Toolbar';
 import withEmbeds from './plugins/withEmbeds.js';
 import withLinks from './plugins/withLinks.js';
 import withTables from './plugins/withTable.js';
+import './style.css';
 import { fontFamilyMap, sizeMap } from './utils/SlateUtilityFunctions.js';
 
 const Element = (props) => {
@@ -130,7 +130,7 @@ const Leaf = ({ attributes, children, leaf }) => {
   return <span {...attributes}>{children}</span>;
 };
 
-const SlateEditor = () => {
+const WazobiaEditor = () => {
   const editor = useMemo(
     () =>
       withHistory(withEmbeds(withTables(withLinks(withReact(createEditor()))))),
@@ -139,6 +139,7 @@ const SlateEditor = () => {
 
   const [showEmbed, setShowEmbed] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [modalValues, setModalValues] = useState(null);
 
   const [value, setValue] = useState(initialValue);
 
@@ -184,8 +185,8 @@ const SlateEditor = () => {
   }, []);
 
   return (
-    <div style={{ border: '2px solid red' }}>
-      <input placeholder='Add title' type='text' className='title-input' />
+    <div>
+      <input placeholder='Add title' type='text' className='title-input text-2xl' width={'40vw'}  />
       <Slate
         editor={editor}
         initialValue={value}
@@ -197,6 +198,7 @@ const SlateEditor = () => {
             placeholder='Write something'
             renderElement={renderElement}
             renderLeaf={renderLeaf}
+            className='p-4 '
             style={{ outline: 'none' }}
           />
           <div className='popup-wrapper '>
@@ -204,32 +206,40 @@ const SlateEditor = () => {
               color='black'
               onClick={() => setShowEmbed(!showEmbed)}
               size={30}
-              className='p-1 inline-block rounded-xl border border-green-500 bg-green-500 text-sm'
+              className='m-3 inline-block text-gray-600 rounded-xl border border-[#CEE3D4]-500 bg-[#CEE3D4]-500 text-sm'
+              style={{
+                backgroundColor: '#CEE3D4',
+              }}
             />
             <EmbedInput
               editor={editor}
               show={showEmbed}
               setShowEmbed={setShowEmbed}
               setShowModal={setShowModal}
+              setModalValues={setModalValues}
             />
           </div>
         </div>
       </Slate>
       {showModal && (
-        <Modal setShowModal={setShowModal} handleAddToNode={handleAddToNode} />
+        <Modal
+          setShowModal={setShowModal}
+          handleAddToNode={handleAddToNode}
+          modalValues={modalValues}
+        />
       )}
     </div>
   );
 };
 
-export default SlateEditor;
+export default WazobiaEditor;
 
 const initialValue = [
   {
     type: 'paragraph',
     children: [
       {
-        text: 'This example shows images in action. It features two ways to add images. You can either add an image via the toolbar icon above, or if you want in on a little secret, copy an image URL to your clipboard and paste it anywhere in the editor!',
+        text: 'Enter Description Here',
       },
     ],
   },
